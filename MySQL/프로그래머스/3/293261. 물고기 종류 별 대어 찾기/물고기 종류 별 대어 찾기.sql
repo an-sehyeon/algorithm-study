@@ -1,0 +1,10 @@
+-- 코드를 작성해주세요
+SELECT F.ID, FI.FISH_NAME, F.LENGTH
+FROM FISH_INFO AS F
+NATURAL JOIN FISH_NAME_INFO AS FI
+WHERE (F.FISH_TYPE,F.LENGTH) IN (
+                    SELECT FISH_TYPE, MAX(LENGTH)
+                    FROM FISH_INFO
+                    GROUP BY FISH_TYPE
+                   )
+ORDER BY ID;
